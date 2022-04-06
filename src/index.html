@@ -1,0 +1,144 @@
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+  integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+  crossorigin="anonymous"
+/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,aspect-ratio"></script>
+<script>
+  function withOpacityValue(variable) {
+    return ({ opacityValue }) => {
+      if (opacityValue === undefined) {
+        opacityValue = 1.0;
+      }
+      return `rgb(var(${variable}) / ${opacityValue})`;
+    };
+  }
+
+  const extraColors = {
+    'outline-button-secondary': withOpacityValue('--outline-button-secondary'),
+  };
+
+  const skin = {
+    'navbar-bg': withOpacityValue('--color-navbar-bg'),
+    'video-bg': withOpacityValue('--color-video-bg'),
+    'video-accent': withOpacityValue('--color-video-accent'),
+    'video-hover': withOpacityValue('--color-video-hover'),
+    'video-playing': withOpacityValue('--color-video-playing'),
+  };
+
+  const textColor = {
+    primary: withOpacityValue('--color-text-primary'),
+    secondary: withOpacityValue('--color-text-secondary'),
+    accent: withOpacityValue('--color-bg-secondary'),
+  };
+
+  const backgroundColor = {
+    primary: withOpacityValue('--color-bg-primary'),
+    secondary: withOpacityValue('--color-bg-secondary'),
+    hilite: withOpacityValue('--color-bg-hilite'),
+    'player-accent': withOpacityValue('--color-bg-secondary'),
+  };
+
+  tailwind.config = {
+    content: ['./app/**/*.{html,ts}'],
+    theme: {
+      extend: {
+        textColor: {
+          app: {
+            ...textColor,
+          },
+        },
+        backgroundColor: {
+          app: {
+            ...backgroundColor,
+          },
+        },
+      },
+    },
+  };
+</script>
+
+<style type="text/tailwindcss">
+  :root {
+    --color-text-primary: 0 0 0;
+    --color-text-secondary: 255 255 255;
+
+    --color-bg-primary: 255 255 255;
+    --color-bg-secondary: 47 84 150;
+    --color-bg-hilite: 179 198 231;
+
+    --color-navbar-bg: 156 163 175;
+    --color-video-bg: 204 255 255;
+    /* --color-video-bg: 156 163 175; */
+    /* --color-video-bg: 204 204 204; */
+    /* --color-video-accent: 204 255 0; */
+    --color-video-accent: 204 0 0;
+    --color-video-hover: 204 153 153;
+    --color-video-playing: 255 255 204;
+  }
+
+  input,
+  select {
+    @apply block;
+    @apply w-full;
+    @apply h-12;
+    /* @apply bg-gray-200; */
+    /* @apply border-red-500; */
+    @apply bg-white;
+    @apply text-gray-700;
+    @apply border;
+    @apply border-solid;
+    @apply border-blue-700;
+    @apply rounded;
+    @apply py-3;
+    @apply px-1;
+    @apply mb-3;
+  }
+
+  textarea {
+    @apply block;
+    @apply w-full;
+    /* @apply bg-gray-200; */
+    @apply bg-white;
+    @apply text-gray-700;
+    /* @apply border-red-500; */
+    @apply border;
+    @apply border-solid;
+    @apply border-blue-700;
+    @apply rounded;
+    @apply py-3;
+    @apply px-1;
+    @apply mb-3;
+    /* @apply leading-tight; */
+    /* @apply focus:outline-none; */
+    /* @apply focus:bg-white; */
+    /* @apply focus:border-gray-500; */
+  }
+
+  .toggle-bg:after {
+    content: '';
+    @apply absolute top-0.5 left-0.5 bg-white border border-gray-300 rounded-full h-5 w-5 transition shadow-sm;
+  }
+
+  input:checked + .toggle-bg:after {
+    transform: translateX(100%);
+    @apply border-white;
+  }
+
+  input:checked + .toggle-bg {
+    @apply bg-blue-600 border-blue-600;
+  }
+</style>
+
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<html>
+  <body>
+    <my-app>loading</my-app>
+  </body>
+</html>

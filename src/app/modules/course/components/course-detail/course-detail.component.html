@@ -1,0 +1,21 @@
+<p>course-detail works!</p>
+
+<ng-container *ngIf="service.item$ | async as course">
+  This is some course details
+
+  <p>Course: {{ course.name }}</p>
+  <p>Description: {{ course.description }}</p>
+
+  <button
+    [routerLink]="['/playlist', course.id]"
+    class="
+      bg-app-fill
+      p-3
+      rounded
+      text-app-base
+      hover:text-app-muted hover:bg-app-button-accent-hover
+    "
+  >
+    Click Me to Launch
+  </button>
+</ng-container>

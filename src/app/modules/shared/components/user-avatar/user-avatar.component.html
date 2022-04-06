@@ -1,0 +1,25 @@
+<ng-container *ngIf="service.item$ | async as profile">
+  <img
+    *ngIf="profile.picture"
+    class="w-8 h-8 rounded-full"
+    [src]="profile.picture"
+    alt="user photo"
+  />
+
+  <span
+    *ngIf="!profile.picture"
+    class="
+      flex
+      items-center
+      justify-center
+      text-center
+      w-8
+      h-8
+      text-white
+      rounded-full
+    "
+    [ngStyle]="{ 'background-color': profile.color }"
+  >
+    {{ initials(profile.displayName) }}
+  </span>
+</ng-container>

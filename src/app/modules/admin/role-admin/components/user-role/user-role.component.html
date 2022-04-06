@@ -1,0 +1,18 @@
+<p>user-role {{ role }} works!</p>
+
+<div
+  class="flex flex-row border-2"
+  *ngFor="let user of userService.items$ | async"
+>
+  <div>
+    <i
+      class="pl-3 far"
+      [ngClass]="
+        checkRole(user.roles)
+          ? 'fa-check-square text-emerald-300'
+          : 'fa-square text-red-200'
+      "
+    ></i>
+  </div>
+  <div class="px-3">{{ user.name }}</div>
+</div>

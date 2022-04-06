@@ -1,0 +1,27 @@
+<ng-container *ngIf="roleService.items$ | async as roles">
+  <table class="table-auto">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th *ngFor="let role of roles">
+          {{ role.name | titlecase }}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of userService.items$ | async">
+        <td>{{ user.name }}</td>
+        <td *ngFor="let role of roles">
+          <input
+            [checked]="isRole(user, role)"
+            type="checkbox"
+            [id]="role.name"
+            name="role"
+            [value]="role.name"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

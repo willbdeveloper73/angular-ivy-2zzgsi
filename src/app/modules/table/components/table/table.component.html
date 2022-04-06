@@ -1,0 +1,106 @@
+<ng-container *ngIf="headers" class="w-full fixed grow items-stretch">
+  <div class="px-4 py-2 flex flex-row justify-end">
+    <app-button-add (click)="add.emit()"></app-button-add>
+  </div>
+
+  <div class="px-14 py-2 flex flex-row justify-start">
+    <app-column-selector [columns]="headers"></app-column-selector>
+  </div>
+
+  <div class="w-full flex flex-col items-center grow items-stretch">
+    <div class="overflow-x-auto">
+      <div class="inline-block min-w-full py-2">
+        <div class="overflow-hidden">
+          <table
+            class="
+              bg-white
+              w-full
+              divide-y divide-gray-200
+              table-auto
+              overflow-scroll
+            "
+          >
+            <thead class="border-b w-full sticky">
+              <tr>
+                <ng-container *ngFor="let column of headers">
+                  <th
+                    *ngIf="column.display"
+                    scope="col"
+                    class="
+                      px-6
+                      py-4
+                      text-left text-sm
+                      font-medium
+                      text-gray-900
+                    "
+                  >
+                    <!-- 
+                    <app-table-header
+                      [element]="column"
+                      [data]="data"
+                    ></app-table-header>
+ -->
+                    {{ column.label }}
+                  </th>
+                </ng-container>
+              </tr>
+            </thead>
+            <tbody
+              class="
+                bg-grey-light
+                overflow-y-scroll
+                h-1/5
+                divide-y divide-gray-200
+              "
+            >
+              <!-- style="height: 20vh" -->
+              <tr
+                *ngFor="let row of data; index as i"
+                class="border-b content-center"
+              >
+                <ng-container *ngFor="let column of columns">
+                  <td
+                    *ngIf="display(column.label)"
+                    class="
+                      px-6
+                      py-4
+                      text-sm
+                      font-light
+                      text-gray-900
+                      whitespace-nowrap
+                    "
+                  >
+                    {{
+                      column.data
+                        ? column.data(row)
+                        : column.dateFormat
+                        ? (row[column.name] | date: column.dateFormat)
+                        : (row[column.name] | truncate: 50)
+                    }}
+                  </td>
+                </ng-container>
+                <!-- Actions column -->
+                <td *ngIf="display('Actions')" class="justify-items-center">
+                  <div class="flex justify-evenly">
+                    <app-button-edit
+                      (clicked)="edit.emit(row)"
+                    ></app-button-edit>
+
+                    <app-button-delete
+                      (clicked)="delete.emit(row)"
+                    ></app-button-delete>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-pagination
+    *ngIf="pagination !== {}"
+    [pagination]="pagination"
+  ></app-pagination>
+</ng-container>

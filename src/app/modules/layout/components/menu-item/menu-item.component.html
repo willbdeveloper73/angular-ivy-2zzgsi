@@ -1,0 +1,18 @@
+<ng-container *ngIf="!item.role; else checkRole">
+  <a
+    [routerLink]="item.link"
+    class="text-app-primary mr-6 hover:bg-app-secondary transition-all rounded"
+    [ngClass]="text_color"
+    >{{ item.text }}</a
+  >
+</ng-container>
+
+<ng-template #checkRole>
+  <a
+    *appHasRole="item.role"
+    [routerLink]="item.link"
+    class="text-app-primary mr-6 hover:bg-app-secondary transition-all rounded"
+    [ngClass]="text_color"
+    >{{ item.text }}</a
+  >
+</ng-template>

@@ -1,0 +1,59 @@
+<div
+  class="group fixed hidden inset-0 bg-gray-600/50 overflow-y-auto h-full z-20"
+  tabindex="-1"
+  role="dialog"
+  #Modal
+>
+  <!-- class="
+    fixed
+    hidden
+    top-0
+    right-0
+    bg-gray-600/50
+    overflow-y-auto
+    h-full
+    z-30
+  " -->
+  <div
+    [@slideInOut]="menuState"
+    class="
+      modal-dialog
+      w-1/2
+      sticky
+      max-w-1/2
+      overflow-hidden
+      overscroll-none
+      bg-white
+      transition-all
+      delay-150
+      ease-out
+      duration-700
+    "
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          (click)="onClose()"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="px-4 rounded bg-app-secondary"
+          (click)="onClose()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

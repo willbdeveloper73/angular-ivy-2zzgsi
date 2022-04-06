@@ -1,0 +1,36 @@
+<div class="flex w-full items-center justify-center pr-4">
+  <label for="toogle" class="flex cursor-pointer items-center">
+    <!-- toggle -->
+    <div class="relative">
+      <!-- input -->
+      <input
+        id="toogle"
+        type="checkbox"
+        class="sr-only"
+        (click)="switch()"
+        [checked]="toggle"
+      />
+      <!-- line -->
+      <div
+        class="h-4 w-10 rounded-full bg-app-secondary shadow-inner"
+        [ngClass]="bg_color"
+      ></div>
+      <!-- dot -->
+      <div
+        class="
+          dot
+          absolute
+          -left-1
+          -top-1
+          h-6
+          w-6
+          rounded-full
+          bg-white
+          shadow
+          transition
+        "
+        [ngClass]="text_color"
+      ></div>
+    </div>
+  </label>
+</div>

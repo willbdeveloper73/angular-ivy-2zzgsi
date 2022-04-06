@@ -1,0 +1,42 @@
+<pre>page: {{ page }}</pre>
+<div class="w-full h-full">
+  <!-- style="max-width:750px;margin:5vh auto;" -->
+  <carousel
+    [infinite]="true"
+    [auto]="false"
+    [bullets]="true"
+    (page)="setPage($event)"
+    (next)="setPage($event)"
+    (previous)="setPage($event)"
+  >
+    <ng-container *ngFor="let item of items">
+      <!-- <div > -->
+      <pre>{{ item | json }}</pre>
+      <div *carouselSlide>
+        <div
+          class="
+            slide
+            flex
+            items-center
+            justify-center
+            text-base
+            rounded-lg
+            w-full
+            h-full
+            absolute
+            overflow-hidden
+            bg-yellow-500
+          "
+        >
+          <span class="flex w-1/2 items-center justify-center">
+            <img class="h-48 scale-75" [src]="item?.image" />
+          </span>
+          <span class="flex w-1/3 flex-col justify-center">
+            <p class="font-bold">{{ item?.name }}</p>
+            <p class="text-sm">{{ item?.description | truncate: 100 }}</p>
+          </span>
+        </div>
+      </div>
+    </ng-container>
+  </carousel>
+</div>

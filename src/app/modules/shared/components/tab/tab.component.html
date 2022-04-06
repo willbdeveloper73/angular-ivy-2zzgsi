@@ -1,0 +1,23 @@
+<div class="px-5">
+  <ul class="flex flex-wrap border-b border-gray-200">
+    <li class="mr-2" *ngFor="let item of menu">
+      <a
+        [routerLink]="[item.link]"
+        aria-current="page"
+        class="
+          active
+          inline-block
+          rounded-t-lg
+          bg-gray-100
+          py-4
+          px-4
+          text-center text-sm
+          font-medium
+          text-blue-600
+        "
+        >{{ item.text }}</a
+      >
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

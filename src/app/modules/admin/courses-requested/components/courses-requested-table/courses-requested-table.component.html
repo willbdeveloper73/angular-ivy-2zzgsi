@@ -1,0 +1,10 @@
+<div>
+  <app-table
+    [columns]="columns()"
+    [data]="service.items$ | async"
+    [pagination]="service.pagination$ | async"
+    (add)="add()"
+    (edit)="edit($event)"
+    (delete)="delete($event)"
+  ></app-table>
+</div>

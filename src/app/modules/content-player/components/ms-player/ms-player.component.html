@@ -1,0 +1,12 @@
+<div *ngIf="displayCheckbox">
+  <label for="complete"
+    >By clicking, you acknowledge you have completed this section</label
+  >
+  <input type="checkbox" name="complete" (change)="acknowledge()" />
+</div>
+
+<ngx-doc-viewer
+  [url]="item?.source?.url"
+  viewer="google"
+  style="width: 100%; height: 50vh"
+></ngx-doc-viewer>
