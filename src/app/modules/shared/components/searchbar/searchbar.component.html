@@ -1,12 +1,13 @@
 <!-- space-x-2 -->
 <div class="flex items-center md:items-stretch md:self-stretch">
-	<span class="pull-right relative w-fit px-2" *ngIf="panel">
+	<span class="pull-right relative w-fit px-2 pt-3" *ngIf="panel">
 	  <input
 		type="search"
 		placeholder="Search"
 		(input)="onInput($event)"
 		class="
 		  w-fit
+		  h-8
 		  appearance-none
 		  rounded
 		  border border-gray-800
@@ -20,7 +21,7 @@
 		  focus:border-gray-600 focus:outline-none
 		"
 	  />
-	  <div class="absolute left-4 top-1.5">
+	  <div class="absolute left-4 top-4">
 		<svg
 		  class="pointer-events-none h-4 w-4 fill-current text-gray-500"
 		  xmlns="http://www.w3.org/2000/svg"
@@ -38,9 +39,11 @@
 	  </div>
 	</span>
   
-	<app-header-button class="text-app-accent" (clicked)="toggle()">
-	  <span class="sr-only">Open search panel</span>
-	  <app-search-icon></app-search-icon>
-	</app-header-button>
+	<div class="flex items-center pt-2">
+		<app-header-button class="text-app-accent" (clicked)="toggle()">
+			<span class="sr-only">Open search panel</span>
+			<app-search-icon></app-search-icon>
+	  </app-header-button>
+	</div>
   </div>
   
